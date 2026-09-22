@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CueDeck — Profesyonel OBS Canlı Yayın Reji Konsolu & Stream Deck</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Pahalı donanımlara son. Telefonunuzu 60 FPS ses mikseri, dinamik sahne matrisi ve canlı tally ışıklarıyla profesyonel bir OBS Studio reji masasına dönüştürün.">
+  <meta name="keywords" content="CueDeck, OBS Studio, Stream Deck, Reji Konsolu, Canlı Yayın, Twitch, YouTube, Kick, OBS WebSocket v5, Audio Mixer, Tally Lights, Broadcaster Deck">
+  <meta name="author" content="Onur Aksoy (OAHUB)">
+  <meta name="theme-color" content="#0A0D14">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oaonuraksoy.github.io/cuedeck/">
+  <meta property="og:title" content="CueDeck — Telefonunuz Profesyonel OBS Reji Masası">
+  <meta property="og:description" content="Aboneliksiz ömür boyu lisans. OBS 28+ ile anında QR kod eşleşmesi, 60 FPS izole VU ses metreleri ve sıfır gecikmeli sahne kontrolü.">
+  <meta property="og:image" content="./assets/favicon.svg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://oaonuraksoy.github.io/cuedeck/">
+  <meta property="twitter:title" content="CueDeck — OBS Canlı Yayın Reji Konsolu">
+  <meta property="twitter:description" content="PC Companion gerektirmeyen, doğrudan OBS v5 WebSocket destekli yeni nesil reji konsolu.">
+  <meta property="twitter:image" content="./assets/favicon.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CueDeck",
+    "operatingSystem": "iOS, Android",
+    "applicationCategory": "MultimediaApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "description": "Turn your mobile device into a professional OBS Studio broadcast control deck with 60 FPS audio meters and live tally.",
+    "softwareVersion": "1.0.0",
+    "author": {
+      "@type": "Person",
+      "name": "Onur Aksoy"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="./index.html" class="brand-logo">
+        <img src="./assets/favicon.svg" alt="CueDeck Logo" width="38" height="38">
+        <span>Cue<span class="highlight">Deck</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#features" data-i18n="nav.features">Özellikler</a></li>
+        <li><a href="#compare" data-i18n="nav.compare">Karşılaştırma</a></li>
+        <li><a href="#how-it-works" data-i18n="nav.howItWorks">Nasıl Çalışır?</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">SSS</a></li>
+        <li><a href="./support.html" data-i18n="nav.support">Destek</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Language Switcher (TR / EN) -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="tr">TR</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <a href="#download" class="btn btn-primary" data-i18n="nav.download">Hemen İndir</a>
+        <button class="mobile-menu-toggle" aria-label="Menüyü Aç/Kapat">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badges-row">
+            <span class="badge badge-live">
+              <span class="pulse-dot"></span>
+              <span data-i18n="hero.badge">CANLI REJİ KONSOLU</span>
+            </span>
+            <span class="badge badge-version">OBS v28+ & v5 NATIVE</span>
+          </div>
+
+          <h1 class="hero-title" data-i18n="hero.title">
+            Pahalı Donanımlara Son: Telefonunuz <span class="gradient-text-red">Profesyonel OBS Reji Masası</span>
+          </h1>
+
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            Donanım satın almaya veya aylık aboneliklere binlerce lira ödemeyin. CueDeck, telefonunuzu 60 FPS ses mikseri, sıfır gecikmeli sahne matrisi ve canlı tally ışıklarıyla tam teşekküllü bir yayın kontrol konsoluna dönüştürür.
+          </p>
+
+          <!-- Store Download Badges -->
+          <div class="store-badges" id="download">
+            <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" class="store-badge-link">
+              <!-- Apple SVG -->
+              <svg viewBox="0 0 170 170">
+                <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.6-7.77-11.71-14.19-5.74-8.91-10.36-19.14-13.86-30.7-3.5-11.55-5.25-22.37-5.25-32.47 0-14.37 3.75-26.3 11.26-35.79 7.51-9.49 16.92-14.38 28.23-14.67 4.9.1 10.39 1.34 16.48 3.71 6.09 2.37 10.14 3.63 12.16 3.79 1.63-.16 5.86-1.46 12.69-3.9 6.83-2.45 12.63-3.6 17.4-3.46 11.96.98 21.6 5.37 28.92 13.17-10.43 6.32-15.54 15.11-15.33 26.37.22 8.71 3.59 16.03 10.11 21.96 6.52 5.93 14.13 9.4 22.83 10.43-2.61 8.05-6.09 16.63-10.43 25.75zM119.22 33.56c0-6.74 2.5-13.04 7.5-17.91 5-4.87 11.08-7.77 18.25-8.69.22 1.3.33 2.39.33 3.26 0 6.63-2.61 13.1-7.83 18.42-5.22 5.33-11.41 8.37-18.57 9.13.1-1.3.32-2.7.32-4.21z"/>
+              </svg>
+              <div class="store-badge-text">
+                <span class="small" data-i18n="store.appStore.sub">App Store'dan</span>
+                <span class="big" data-i18n="store.appStore.main">İndirin</span>
+              </div>
+            </a>
+
+            <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" class="store-badge-link">
+              <!-- Google Play SVG -->
+              <svg viewBox="0 0 512 512">
+                <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
+              </svg>
+              <div class="store-badge-text">
+                <span class="small" data-i18n="store.googlePlay.sub">Google Play'den</span>
+                <span class="big" data-i18n="store.googlePlay.main">Edinin</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="hero-highlights">
+            <div class="hero-highlight-item">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span data-i18n="hero.highlight1">Ücretsiz İndir • $0.99 Pro Ömür Boyu</span>
+            </div>
+            <div class="hero-highlight-item">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span data-i18n="hero.highlight2">PC Companion Yazılımı Gerektirmez</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== HERO CONSOLE MOCKUP ==================== -->
+        <div class="hero-mockup-wrapper">
+          <div class="mockup-glow"></div>
+          
+          <div class="console-chassis">
+            <div class="console-screen">
+              <!-- Top Telemetry Header -->
+              <div class="mockup-header">
+                <div class="mockup-header-left">
+                  <span class="mockup-rec-badge">00:14:28</span>
+                  <span style="color: #34C759; font-weight: 700;">60 FPS</span>
+                </div>
+                <div class="mockup-header-right">
+                  <span>CPU: 4.2%</span>
+                  <span style="color: #0A84FF;">OBS 30.2</span>
+                </div>
+              </div>
+
+              <!-- 16:9 Program Video Monitor -->
+              <div class="mockup-monitor">
+                <span class="mockup-monitor-overlay">CANLI: OYUN & WEBCAM</span>
+                <div class="mockup-monitor-art">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                  </svg>
+                  <span style="font-size: 0.7rem; font-weight: 600;">1080p60 • 6000 kbps</span>
+                </div>
+                <div class="mockup-monitor-stats">0 KARE KAYBI</div>
+              </div>
+
+              <!-- 2x2 Interactive Scene Matrix Pads -->
+              <div class="mockup-scenes-grid">
+                <!-- Pad 1: Live -->
+                <div class="scene-pad live">
+                  <div class="pad-top">
+                    <span class="pad-tally red"></span>
+                    <span style="font-size: 0.65rem; color: #FF3B30; font-weight: 800;">LIVE</span>
+                  </div>
+                  <span class="pad-title">Oyun & Webcam</span>
+                  <span class="pad-sub">1. Sahne (Program)</span>
+                </div>
+
+                <!-- Pad 2: Preview -->
+                <div class="scene-pad preview">
+                  <div class="pad-top">
+                    <span class="pad-tally green"></span>
+                    <span style="font-size: 0.65rem; color: #34C759; font-weight: 800;">PREVIEW</span>
+                  </div>
+                  <span class="pad-title">Tam Ekran Kamera</span>
+                  <span class="pad-sub">2. Sahne (Hazır)</span>
+                </div>
+
+                <!-- Pad 3: Regular -->
+                <div class="scene-pad">
+                  <div class="pad-top">
+                    <span class="pad-tally" style="background: rgba(255,255,255,0.2);"></span>
+                    <span style="font-size: 0.65rem; color: #64748B;">STANDBY</span>
+                  </div>
+                  <span class="pad-title">BRB / Mola Ekranı</span>
+                  <span class="pad-sub">VTR Sayacı Aktif</span>
+                </div>
+
+                <!-- Pad 4: Regular -->
+                <div class="scene-pad">
+                  <div class="pad-top">
+                    <span class="pad-tally" style="background: rgba(255,255,255,0.2);"></span>
+                    <span style="font-size: 0.65rem; color: #64748B;">STANDBY</span>
+                  </div>
+                  <span class="pad-title">Yayın Başlıyor</span>
+                  <span class="pad-sub">Giriş İntrosu</span>
+                </div>
+              </div>
+
+              <!-- 60 FPS Dynamic VU Meter Strip -->
+              <div class="mockup-audio-strip">
+                <div class="audio-header">
+                  <span>MIC / AUX (SHURE SM7B)</span>
+                  <span class="vu-db-text">-6 dB</span>
+                </div>
+                <div class="vu-meter-bar-container">
+                  <div class="vu-meter-track">
+                    <div class="vu-meter-fill"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Row: Studio CUT button -->
+              <div class="mockup-actions-row">
+                <button class="mockup-btn cut-btn">
+                  <span>⚡ TAKE / CUT GEÇİŞİ</span>
+                </button>
+                <button class="mockup-btn" style="color: #FF3B30; border-color: rgba(255,59,48,0.3);">
+                  <span>🎙️ MUTE</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6 CORE MODULES SECTION ==================== -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-version" data-i18n="features.tag">PROFESYONEL DONANIM GÜCÜ</span>
+          <h2 class="gradient-text-blue" data-i18n="features.title">Yayıncılar İçin Tasarlanan 6 Çekirdek Reji Modülü</h2>
+          <p class="section-subtitle" data-i18n="features.subtitle">OBS Studio v28+ dahili WebSocket protokolüyle doğrudan konuşur. Sıfır aracı, sıfır gecikme.</p>
+        </div>
+
+        <div class="modules-grid">
+          <!-- Modül 1 -->
+          <div class="module-card card-red">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod1.title">Dinamik Sahne Matrisi & Tally</h3>
+            <p class="module-desc" data-i18n="mod1.desc">
+              Sahnelerinizi manuel girmeye son. OBS'e bağlandığınız an tüm sahneler otomatik taranır. Donanım konsollarındaki gibi Kırmızı (Program/Canlı) ve Yeşil (Preview) tally lambalarıyla yayını güvenle yönetin.
+            </p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod1.spec1">Tek dokunuşla solo geçiş (Quick Switch)</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod1.spec2">Büyük stüdyo CUT / TAKE butonu</span></li>
+            </ul>
+          </div>
+
+          <!-- Modül 2 -->
+          <div class="module-card">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod2.title">Akıllı Katman & Göz (Overlay) Kontrolü</h3>
+            <p class="module-desc" data-i18n="mod2.desc">
+              Kamera çerçevesi, sponsor logoları, sohbet pencereleri ve alt bantları tek tuşla anında gizleyin veya yayına verin. Sahne değiştikçe katman listesi otomatik yenilenir.
+            </p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod2.spec1">Sahneye özel katman senkronizasyonu</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod2.spec2">Hızlı kaza önleyici aç/kapa mantığı</span></li>
+            </ul>
+          </div>
+
+          <!-- Modül 3 -->
+          <div class="module-card card-green">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod3.title">60 FPS İzole Ses Mikseri & VU Metre</h3>
+            <p class="module-desc" data-i18n="mod3.desc">
+              Oyun sesi, mikrofon, Discord ve müzik kanallarını bağımsız dikey fader'larla ayarlayın. Flutter GPU RepaintBoundary ile sıfır takılmalı, donanım kalitesinde gerçek zamanlı VU peak metreleri.
+            </p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod3.spec1">Tek dokunuşla acil kırmızı MUTE göstergesi</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod3.spec2">Hassas desibel (-dB) ayar fader'ları</span></li>
+            </ul>
+          </div>
+
+          <!-- Modül 4 -->
+          <div class="module-card">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod4.title">Medya & VTR Sayacı</h3>
+            <p class="module-desc" data-i18n="mod4.desc">
+              Jingle, video klipler ve B-Roll görüntülerini başlatın, durdurun veya baştan sarın. Kalan süreyi canlı geri sayım sayacıyla (VTR) takip ederek yayında sessizlik anlarını sıfıra indirin.
+            </p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod4.spec1">Kalan süre milisaniye geri sayımı</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod4.spec2">Görsel medya durum göstergesi</span></li>
+            </ul>
+          </div>
+
+          <!-- Modül 5 -->
+          <div class="module-card card-red">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod5.title">Yayın & Kayıt Telemetrisi</h3>
+            <p class="module-desc" data-i18n="mod5.desc">
+              Canlı Program ekranını telefonunuzdan izleyin. CPU kullanımı, düşen kare (dropped frames), kbit/s bitrate ve süre telemetrisi. Kazara yayını kapatmayı imkansız kılan Slide-to-Confirm koruması.
+            </p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod5.spec1">Slide-to-Activate / Deactivate güvenliği</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod5.spec2">Kırmızı canlı REC rozeti ve süresi</span></li>
+            </ul>
+          </div>
+
+          <!-- Modül 6 -->
+          <div class="module-card">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod6.title">Özel Makro Deck & Otomasyon</h3>
+            <p class="module-desc" data-i18n="mod6.desc">
+              Tek dokunuşla zincirleme aksiyonlar: 'Mola Modu'na basarak mikrofonu susturun, arkaplan müziğini kısın, mola sahnesine geçin ve geri sayım videosunu aynı anda başlatın.
+            </p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod6.spec1">Sıralı çoklu aksiyon tetikleme</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod6.spec2">Donanımsal dokunsal titreşim (Haptic) hissiyatı</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COMPARISON TABLE SECTION ==================== -->
+    <section class="section" id="compare">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-live" data-i18n="compare.tag">NEDEN CUEDECK?</span>
+          <h2 class="gradient-text-red" data-i18n="compare.title">Geleneksel Çözümlerle Karşılaştırın</h2>
+          <p class="section-subtitle" data-i18n="compare.subtitle">Donanım masraflarına ve karmaşık PC sunucularına veda edin.</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th data-i18n="compare.th.feature">Özellik & Kapasite</th>
+                <th class="highlight-col" data-i18n="compare.th.cuedeck">CueDeck</th>
+                <th data-i18n="compare.th.streamdeck">Elgato Stream Deck</th>
+                <th data-i18n="compare.th.touchportal">Touch Portal</th>
+                <th data-i18n="compare.th.deckboard">Deckboard</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="compare.row1">Maliyet Modeli</td>
+                <td class="highlight-col status-icon yes" data-i18n="compare.row1.cuedeck">Ücretsiz İndirme + $0.99 Pro (Ömür Boyu)</td>
+                <td class="status-icon no" data-i18n="compare.row1.streamdeck">150$ - 250$ Pahalı Donanım</td>
+                <td class="status-icon warn" data-i18n="compare.row1.touchportal">Aylık / Yıllık Pro Abonelik</td>
+                <td class="status-icon warn" data-i18n="compare.row1.deckboard">Abonelik / Ücretli Eklentiler</td>
+              </tr>
+              <tr>
+                <td data-i18n="compare.row2">PC Companion Yazılımı Gereksinimi</td>
+                <td class="highlight-col status-icon yes" data-i18n="compare.row2.cuedeck">GEREKMEZ (Doğrudan OBS v5 WebSocket)</td>
+                <td class="status-icon no" data-i18n="compare.row2.streamdeck">Zorunlu Elgato Software</td>
+                <td class="status-icon no" data-i18n="compare.row2.touchportal">Zorunlu Aracı PC Sunucusu</td>
+                <td class="status-icon no" data-i18n="compare.row2.deckboard">Zorunlu Desktop Server</td>
+              </tr>
+              <tr>
+                <td data-i18n="compare.row3">Kurulum ve Eşleşme Süresi</td>
+                <td class="highlight-col status-icon yes" data-i18n="compare.row3.cuedeck">1 Saniyede OBS QR Kod Taraması</td>
+                <td class="status-icon warn" data-i18n="compare.row3.streamdeck">USB Kablo + Yazılım Ayarları</td>
+                <td class="status-icon no" data-i18n="compare.row3.touchportal">Manuel IP, Port & Firewall Yapılandırması</td>
+                <td class="status-icon no" data-i18n="compare.row3.deckboard">Manuel IP ve Eklenti Yükleme</td>
+              </tr>
+              <tr>
+                <td data-i18n="compare.row4">60 FPS Canlı İzole VU Metre</td>
+                <td class="highlight-col status-icon yes" data-i18n="compare.row4.cuedeck">Mevcut (GPU İvmeli Akıcı)</td>
+                <td class="status-icon no" data-i18n="compare.row4.streamdeck">Yalnızca statik LCD tuşlar</td>
+                <td class="status-icon warn" data-i18n="compare.row4.touchportal">Gecikmeli / Düşük Yenileme Hızı</td>
+                <td class="status-icon no" data-i18n="compare.row4.deckboard">Yok veya Çok Gecikmeli</td>
+              </tr>
+              <tr>
+                <td data-i18n="compare.row5">Mobil Cihazda Canlı Program Monitörü</td>
+                <td class="highlight-col status-icon yes" data-i18n="compare.row5.cuedeck">Mevcut (16:9 Gerçek Zamanlı)</td>
+                <td class="status-icon no" data-i18n="compare.row5.streamdeck">Yok</td>
+                <td class="status-icon warn" data-i18n="compare.row5.touchportal">Sadece Ekstra Plugin ile</td>
+                <td class="status-icon no" data-i18n="compare.row5.deckboard">Yok</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3-STEP SETUP GUIDE ==================== -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-version" data-i18n="steps.tag">3 ADIMDA BAŞLAYIN</span>
+          <h2 class="gradient-text-blue" data-i18n="steps.title">1 Dakikada Yayına Hazırsınız</h2>
+          <p class="section-subtitle" data-i18n="steps.subtitle">Ek sürücü veya sunucu programı kurmanıza gerek yok. OBS Studio 28+ zaten hazır.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num" data-i18n="step1.num">1</div>
+            <h3 data-i18n="step1.title">OBS 28+'ı Açın</h3>
+            <p data-i18n="step1.desc">
+              OBS Studio menüsünden Araçlar -> 'WebSocket Sunucusu Ayarları' bölümüne girin. WebSocket sunucusunu etkinleştirin.
+            </p>
+            <div class="step-visual">
+              <div>> Menü: Araçlar (Tools)</div>
+              <div style="color: #34C759;">> [x] WebSocket Sunucusunu Etkinleştir</div>
+              <div>> Varsayılan Port: 4455</div>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num" data-i18n="step2.num">2</div>
+            <h3 data-i18n="step2.title">Bağlantı Bilgilerini Gösterin</h3>
+            <p data-i18n="step2.desc">
+              'Show Connect Info' butonuna basarak ekrana gelen yerel QR kodunu açın.
+            </p>
+            <div class="step-visual">
+              <div>> Buton: [Show Connect Info]</div>
+              <div style="color: #0A84FF;">> Yerel IP: 192.168.1.xxx</div>
+              <div>> Protokol: obsws://</div>
+            </div>
+          </div>
+
+          <div class="step-card active-step">
+            <div class="step-num" data-i18n="step3.num">3</div>
+            <h3 data-i18n="step3.title">CueDeck ile Okutun</h3>
+            <p data-i18n="step3.desc">
+              Telefonunuzdaki CueDeck uygulamasını açın, QR kodu kameraya gösterin. Anında eşleşin ve yayını yönetmeye başlayın!
+            </p>
+            <div class="step-visual">
+              <div style="color: #FF3B30;">> Kamera QR Vizörü Aktif</div>
+              <div>> Otomatik SHA-256 Auth</div>
+              <div style="color: #34C759;">> BAĞLANTI BAŞARILI (0ms)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STREAMER REVIEWS ==================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-live" data-i18n="reviews.tag">YAYINCI DENEYİMLERİ</span>
+          <h2 class="gradient-text-red" data-i18n="reviews.title">Yayıncılar CueDeck Hakkında Ne Diyor?</h2>
+          <p class="section-subtitle" data-i18n="reviews.subtitle">Twitch, YouTube ve Kick yayıncılarının reji tercihi.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">
+              "Fiziksel stream deck'e 200 dolar vermek yerine eski iPhone'uma CueDeck kurdum. Gecikme kesinlikle sıfır. Sahneler arası TAKE geçişi ve kırmızı tally ışıkları tam bir televizyon rejisi konforu yaşatıyor."
+            </p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">EK</div>
+              <div class="reviewer-info">
+                <h4>Emre K.</h4>
+                <span>Twitch Partner Yayıncısı</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">
+              "Touch Portal gibi saçma sapan masaüstü sunucu programlarıyla ve firewall portlarıyla uğraşmaktan bıkmıştım. OBS'in kendi QR kodunu telefonla okuttuğum an çalışması büyüleyici."
+            </p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">BS</div>
+              <div class="reviewer-info">
+                <h4>Burak S.</h4>
+                <span>YouTube Canlı Yayıncısı & Podcaster</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">
+              "Ses seviyesi ve VU metrelerin 60 FPS akıcılığı inanılmaz. Oyun oynarken alt-tab yapmadan Discord sesini kısmak ve yayın klibini VTR sayacıyla izlemek yayın kalitemi iki katına çıkardı."
+            </p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">DY</div>
+              <div class="reviewer-info">
+                <h4>Deniz Y.</h4>
+                <span>Kick Yayıncısı</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ACCORDION ==================== -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-version" data-i18n="faq.tag">MERAK EDİLENLER</span>
+          <h2 class="gradient-text-blue" data-i18n="faq.title">Sıkça Sorulan Sorular</h2>
+          <p class="section-subtitle" data-i18n="faq.subtitle">Aklınıza takılan soruların yanıtlarını burada bulabilirsiniz.</p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-item open">
+            <button class="faq-trigger">
+              <span data-i18n="faq.q1">CueDeck kullanmak için bilgisayarıma ek bir program kurmam gerekir mi?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq.a1">
+                Kesinlikle HAYIR! CueDeck, OBS Studio sürüm 28 ve sonrasında yerleşik olarak bulunan resmi 'OBS WebSocket v5' protokolü ile doğrudan haberleşir. Bilgisayarınıza ekstra sunucu, aracı veya companion programı yüklemeniz gerekmez.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq.q2">Hangi OBS sürümleriyle uyumludur?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq.a2">
+                OBS Studio v28, v29, v30, v31 ve sonraki tüm güncel sürümlerle %100 uyumludur. Eski OBS sürümleri için de obs-websocket eklentisi mevcuttur ancak yerleşik performans için OBS 28+ tavsiye edilir.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq.q3">Telefonum ile bilgisayarım aynı Wi-Fi ağında mı olmalı?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq.a3">
+                Evet. CueDeck, en yüksek güvenlik ve sıfır gecikme için yerel ağ (LAN / Wi-Fi) üzerinden çalışır. İnternet kesilse dahi yerel reji bağlantınız kopmaz. Telefonunuz ve bilgisayarınız aynı modeme bağlı olmalıdır.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq.q4">Abonelik ücreti var mı?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq.a4">
+                Hayır! CueDeck 'Pay Once, Own Forever' (Bir kez öde, sonsuza dek kullan) felsefesine inanır. Aylık veya yıllık gizli abonelik ücretleri yoktur.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq.q5">Verilerim veya OBS şifrem güvende mi?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq.a5">
+                Tüm bağlantı şifreleriniz cihazınızın yerel güvenli anahtar zincirinde (iOS Keychain / Android Keystore) şifrelenerek saklanır. CueDeck hiçbir harici sunucuya, analitik servisine veya buluta veri göndermez. Sıfır telemetri ve sıfır veri toplama politikası geçerlidir.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BOTTOM CTA ==================== -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-banner-content">
+            <span class="badge badge-live">CUEDECK 1.0</span>
+            <h2 class="gradient-text-blue" data-i18n="cta.title">Reji Masanızı Cebinize Taşıyın</h2>
+            <p class="section-subtitle" data-i18n="cta.subtitle">
+              Hemen indirin, saniyeler içinde OBS ile eşleştirin ve yayınlarınızı bir üst lige taşıyın.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#download" class="btn btn-primary" data-i18n="nav.download">Hemen İndir</a>
+              <a href="./support.html" class="btn btn-secondary" data-i18n="nav.support">Kurulum Desteği</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./index.html" class="brand-logo">
+            <img src="./assets/favicon.svg" alt="CueDeck Logo" width="34" height="34">
+            <span>Cue<span class="highlight">Deck</span></span>
+          </a>
+          <p data-i18n="footer.desc">
+            OBS Studio için profesyonel, sıfır gecikmeli, donanım hisli mobil yayın kontrol konsolu.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.nav">Gezinme</h4>
+          <ul class="footer-links">
+            <li><a href="#features" data-i18n="nav.features">Özellikler</a></li>
+            <li><a href="#compare" data-i18n="nav.compare">Karşılaştırma</a></li>
+            <li><a href="#how-it-works" data-i18n="nav.howItWorks">Nasıl Çalışır?</a></li>
+            <li><a href="#faq" data-i18n="nav.faq">SSS</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.legal">Yasal & Güvenlik</h4>
+          <ul class="footer-links">
+            <li><a href="./privacy.html" data-i18n="footer.privacy">Gizlilik Politikası</a></li>
+            <li><a href="./terms.html" data-i18n="footer.terms">Kullanım Koşulları (EULA)</a></li>
+            <li><a href="./support.html" data-i18n="footer.support">Destek & Sorun Giderme</a></li>
+            <li><a href="./data-deletion.html" data-i18n="footer.deletion">Kullanıcı Verisi Silme</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.connect">Bağlantı & İletişim</h4>
+          <ul class="footer-links">
+            <li><a href="https://github.com/oaonuraksoy/cuedeck" target="_blank" rel="noopener noreferrer">GitHub Deposu</a></li>
+            <li><a href="https://github.com/oaonuraksoy/cuedeck/issues" target="_blank" rel="noopener noreferrer">Hata Bildir / Issue</a></li>
+            <li><a href="mailto:dev@onuraksoy.com.tr">dev@onuraksoy.com.tr</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 CueDeck. <span data-i18n="footer.rights">Tüm Hakları Saklıdır.</span>
+        </div>
+        <div class="disclaimer-text" data-i18n="footer.disclaimer">
+          CueDeck bağımsız bir yazılımdır. OBS Studio, OBS Project'in; Elgato & Stream Deck, Corsair Gaming Inc.'in tescilli ticari markalarıdır. İlgili markalar referans amaçlı belirtilmiştir.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destek & Sorun Giderme Merkezi (Help & Support) — CueDeck</title>
+  
+  <meta name="description" content="CueDeck yardım ve destek merkezi. OBS WebSocket v5 bağlantı rehberi, Windows Firewall ayarları, iOS yerel ağ izinleri ve hata çözümleri.">
+  <meta name="theme-color" content="#0A0D14">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oaonuraksoy.github.io/cuedeck/support.html">
+  <meta property="og:title" content="Destek & Sorun Giderme Merkezi (Help & Support) — CueDeck">
+  <meta property="og:description" content="CueDeck yardım ve destek merkezi. OBS WebSocket v5 bağlantı rehberi, Windows Firewall ayarları, iOS yerel ağ izinleri ve hata çözümleri.">
+  <meta property="og:image" content="./assets/favicon.svg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary">
+  <meta property="twitter:url" content="https://oaonuraksoy.github.io/cuedeck/support.html">
+  <meta property="twitter:title" content="Destek & Sorun Giderme — CueDeck">
+  <meta property="twitter:description" content="OBS WebSocket v5 bağlantı rehberi, Windows Firewall ayarları ve hata kodları.">
+  <meta property="twitter:image" content="./assets/favicon.svg">
+
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- JSON-LD Structured Data (FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "CueDeck Destek ve Sorun Giderme Merkezi",
+    "url": "https://oaonuraksoy.github.io/cuedeck/support.html",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "OBS WebSocket sunucusunu nasıl aktif ederim?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OBS Studio menüsünden Araçlar -> WebSocket Sunucusu Ayarları seçeneğine girin, 'WebSocket Sunucusunu Etkinleştir' kutucuğunu işaretleyin (Varsayılan port 4455)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "WebSocket Connection Failed (1006 / Timeout) hatasını nasıl çözerim?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Telefonunuz ve bilgisayarınızın aynı Wi-Fi ağına bağlı olduğundan emin olun. Windows Defender Güvenlik Duvarında OBS Studio'nun Özel Ağlara erişimine izin verin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "iPhone'um OBS sunucusuna neden bağlanamıyor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "iOS Ayarlar -> Gizlilik ve Güvenlik -> Yerel Ağ (Local Network) menüsünden CueDeck uygulamasının yanındaki anahtarı açın."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="./index.html" class="brand-logo">
+        <img src="./assets/favicon.svg" alt="CueDeck Logo" width="38" height="38">
+        <span>Cue<span class="highlight">Deck</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="./index.html#features">Özellikler</a></li>
+        <li><a href="./index.html#compare">Karşılaştırma</a></li>
+        <li><a href="#connection-guide">Bağlantı Rehberi</a></li>
+        <li><a href="#firewall">Güvenlik Duvarı</a></li>
+        <li><a href="#faq-errors">Hata Kodları</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="./index.html" class="btn btn-secondary">← Ana Sayfa</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="legal-page">
+    <div class="container">
+      <div class="legal-header">
+        <span class="badge badge-live">YARDIM & DESTEK MERKEZİ</span>
+        <h1>CueDeck Bilgi Bankası & Sorun Giderme</h1>
+        <div class="legal-meta">
+          <span>OBS WebSocket v5 • Port 4455 • Wi-Fi Sorun Giderme</span>
+          <span>E-posta: <a href="mailto:dev@onuraksoy.com.tr" style="color: var(--accent-blue);">dev@onuraksoy.com.tr</a></span>
+        </div>
+      </div>
+
+      <div class="legal-box">
+        <article class="legal-content">
+
+          <!-- REHBER 1: OBS WEBSOCKET KURULUMU -->
+          <h2 id="connection-guide">🔌 1. OBS WebSocket v5 Bağlantı Kılavuzu</h2>
+          <p>
+            CueDeck, OBS Studio sürüm 28 ve üstünde yerleşik gelen <strong>OBS WebSocket v5</strong> sunucusunu kullanır. Ek bir eklenti veya masaüstü sunucu programı kurmanıza gerek yoktur.
+          </p>
+          
+          <div class="legal-callout">
+            <strong>Adım Adım Yapılandırma:</strong>
+            <ol style="margin-top: 10px; margin-bottom: 0;">
+              <li>Bilgisayarınızda <strong>OBS Studio</strong> uygulamasını açın.</li>
+              <li>Üst menüden <strong>Araçlar (Tools)</strong> -> <strong>WebSocket Sunucusu Ayarları (WebSocket Server Settings)</strong> seçeneğine tıklayın.</li>
+              <li><strong>"WebSocket Sunucusunu Etkinleştir" (Enable WebSocket server)</strong> kutucuğunu işaretleyin.</li>
+              <li>Sunucu Portu varsayılan olarak <strong>4455</strong> olmalıdır.</li>
+              <li>İsteğe bağlı olarak <strong>"Kimlik Doğrulamayı Etkinleştir" (Enable Authentication)</strong> seçeneğini açıp bir şifre belirleyebilirsiniz.</li>
+              <li>Penceredeki <strong>"Show Connect Info" (Bağlantı Bilgilerini Göster)</strong> butonuna tıklayın.</li>
+              <li>Ekrana gelen QR kodunu CueDeck mobil uygulamasındaki vizör ile okutun.</li>
+            </ol>
+          </div>
+
+          <!-- REHBER 2: GÜVENLİK DUVARI -->
+          <h2 id="firewall">🛡️ 2. Windows Güvenlik Duvarı (Firewall) ve Ağ İzinleri</h2>
+          <p>
+            Telefonunuz OBS'e bağlanamıyorsa veya "Bağlantı Zaman Aşımına Uğradı" uyarısı alıyorsanız, en yaygın neden Windows Güvenlik Duvarı'nın port 4455'i engellemesidir.
+          </p>
+
+          <h3>Windows Güvenlik Duvarı Çözümü:</h3>
+          <ul>
+            <li>Windows Arama çubuğuna <code>Windows Defender Güvenlik Duvarı</code> yazın ve açın.</li>
+            <li>Sol taraftaki <strong>"Bir uygulamanın veya özelliğin Windows Defender Güvenlik Duvarını geçmesine izin ver"</strong> bağlantısına tıklayın.</li>
+            <li>Listede <strong>OBS Studio</strong>'yu bulun. Hem <strong>Özel (Private)</strong> hem de <strong>Ortak (Public)</strong> kutucuklarının işaretli olduğundan emin olun.</li>
+            <li>Ayrıca ağ bağlantınızın (Wi-Fi) Windows ayarlarında "Ortak Ağ" yerine <strong>"Özel Ağ" (Private Network)</strong> olarak seçildiğinden emin olun.</li>
+          </ul>
+
+          <!-- REHBER 3: iOS YEREL AĞ İZNİ -->
+          <h2>📱 3. Apple iOS "Yerel Ağ" (Local Network) İzni Sorunu</h2>
+          <p>
+            iOS 14 ve sonraki sürümlerde Apple, uygulamaların yerel ağınızdaki cihazlara bağlanması için açık onay gerektirir.
+          </p>
+          <div class="legal-callout alert-red">
+            <strong>iOS İznini Açma:</strong><br>
+            iPhone'unuzda <strong>Ayarlar -> Gizlilik ve Güvenlik -> Yerel Ağ (Local Network)</strong> yolunu izleyin. Listede <strong>CueDeck</strong>'in yanındaki anahtarın açık (yeşil) olduğundan emin olun. Bu izin kapalıysa telefonunuz bilgisayarınızdaki OBS sunucusunu göremez.
+          </div>
+
+          <!-- REHBER 4: HATA KODLARI VE ANLAMLARI -->
+          <h2 id="faq-errors">⚠️ 4. Sık Karşılaşılan Hata Kodları</h2>
+
+          <div style="display: flex; flex-direction: column; gap: 16px; margin: 20px 0;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px;">
+              <h4 style="color: #FF3B30; margin-bottom: 6px;">Hata: "WebSocket Connection Failed (1006 / Timeout)"</h4>
+              <p style="margin-bottom: 0;">
+                <strong>Neden:</strong> Telefonunuz OBS'in çalıştığı IP ve porta ulaşamıyor.<br>
+                <strong>Çözüm:</strong> Telefon ve PC'nin aynı Wi-Fi ağına bağlı olduğunu kontrol edin. OBS'te WebSocket sunucusunun açık olduğunu ve Windows Güvenlik Duvarı'nın izin verdiğini doğrulayın.
+              </p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px;">
+              <h4 style="color: #FF9500; margin-bottom: 6px;">Hata: "Authentication Failed (4009 / Invalid Password)"</h4>
+              <p style="margin-bottom: 0;">
+                <strong>Neden:</strong> OBS WebSocket şifresi yanlış girildi.<br>
+                <strong>Çözüm:</strong> OBS içindeki "Show Connect Info" ekranındaki şifreyi kontrol edin veya QR kodunu CueDeck ile tekrar tarayın.
+              </p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px;">
+              <h4 style="color: #0A84FF; margin-bottom: 6px;">Hata: "Program Monitörü Siyah Ekran Gösteriyor"</h4>
+              <p style="margin-bottom: 0;">
+                <strong>Neden:</strong> OBS Studio'da aktif sahnede herhangi bir video kaynağı bulunmuyor veya OBS sanal kamerası/ekran yakalaması arka planda donmuş.<br>
+                <strong>Çözüm:</strong> OBS'te bir sahneye ekran yakalama veya kamera kaynağı ekleyin. CueDeck saniyeler içinde önizleme karesini yenileyecektir.
+              </p>
+            </div>
+          </div>
+
+          <!-- DOĞRUDAN DESTEK KANALLARI -->
+          <h2>💬 5. Bize Ulaşın / Doğrudan Destek</h2>
+          <p>
+            Sorununuz çözülmediyse veya yeni bir özellik öneriniz varsa geliştirici ekibimizle doğrudan iletişime geçebilirsiniz:
+          </p>
+          <ul>
+            <li><strong>Destek E-Postası:</strong> <a href="mailto:dev@onuraksoy.com.tr" style="color: var(--accent-blue);">dev@onuraksoy.com.tr</a> (Maksimum 24 saat içinde yanıtlanır)</li>
+            <li><strong>GitHub Issue Tracker:</strong> <a href="https://github.com/oaonuraksoy/cuedeck/issues" target="_blank" rel="noopener noreferrer" style="color: var(--accent-blue);">Hata Bildirimi veya İstek Açın</a></li>
+          </ul>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <div>&copy; 2026 CueDeck. Tüm Hakları Saklıdır.</div>
+        <div>
+          <a href="./index.html" style="margin-right: 14px;">Ana Sayfa</a>
+          <a href="./privacy.html" style="margin-right: 14px;">Gizlilik Politikası</a>
+          <a href="./terms.html" style="margin-right: 14px;">Kullanım Koşulları</a>
+          <a href="./data-deletion.html">Veri Silme</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
