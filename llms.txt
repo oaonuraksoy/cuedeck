@@ -1,0 +1,28 @@
+# CueDeck — Mobile OBS Studio Remote & Stream Deck
+
+> CueDeck (`tr.com.oahub.cuedeck`) is a zero-latency mobile broadcast console and stream deck for OBS Studio v28+ on iOS (15.0+) and Android (7.0+). It communicates directly over your local Wi-Fi/LAN using the native OBS WebSocket v5 protocol with zero PC companion software, zero cloud servers, zero ads, and zero telemetry. Latest release: `2026.11.24` (Build 5).
+
+## Core Architecture & Features
+- **Direct OBS WebSocket v5 Pairing:** Connects via built-in OBS QR code scan (`Show Connect Info`), parallel local-network auto-scan (`ws://` port `4455` / RFC 1918 subnet discovery), `obsws://` deep links, or manual IP/port/SSL profiles stored in hardware-backed iOS Keychain / Android Keystore.
+- **Live Scene Matrix & Tally:** Solo mode and Studio Mode (Red `LIVE/PROGRAM` and Green `PREVIEW` tally indicators, dedicated `TAKE / CUT` button), 16:9 live confidence program monitor, responsive multi-column tablet layout, and hardware keyboard shortcuts (`1-8`, `Space`, `M`, `R`, `S`).
+- **60 FPS GPU-Isolated Audio Mixer & Inspector:** Tactile vertical dB faders with 70ms per-channel debounce, instant mute toggles, 60 FPS GPU-isolated VU peak meters (`RepaintBoundary` + `ValueNotifier`), channel pinning/hiding, Audio Monitor Type selector, and Sync Offset tuning (`-950..2000 ms`).
+- **Media VTR, Broadcast Telemetry & Studio Tools:** Live media clip transport controls with VTR timers, CPU/FPS/bitrate/dropped-frames telemetry, slide-to-confirm safety locks, Record Pause/Resume, Virtual Camera toggle, Replay Buffer instant clip saving, Scene Transition & duration slider, OBS Profile & Scene Collection switching, Source Filter toggles, and an optional zero-OAuth Popout Live Chat URL dock.
+- **Custom Multi-Page Macros & Auto-Mute Rules:** Chained multi-step automation across 3 deck pages, JSON backup export/import, smart target matching, and multi-language scene auto-mute rules.
+- **8-Language Auto-Detected UI:** Automatic device locale detection with instant switching across English (`en`), Turkish (`tr`), Spanish (`es`), Portuguese (`pt`), German (`de`), French (`fr`), Russian (`ru`), and Indonesian (`id`).
+
+## Pricing & Packaging
+- **Free Tier:** Full 60 FPS audio mixer, 16:9 live confidence monitor, first 2 OBS scenes (`maxFreeScenes = 2`), LAN auto-scan, QR pairing, stream/record safety controls, Record Pause, Virtual Camera toggle, and built-in offline Demo Mode.
+- **CueDeck Pro Lifetime (`$0.99` one-time purchase, no subscriptions):** Unlocks 16+ unlimited scene banks, smart per-scene Auto-Mute matrix, Replay Buffer, Scene Transition & duration picker, Source Filters, OBS Profile & Scene Collection switching, Advanced Audio Inspector (Monitor/Sync/Pin/Hide), Custom Macro Pages & JSON Backup, and Live Chat popout dock (`tr.com.oahub.cuedeck.pro_lifetime`).
+
+## Privacy & Security
+- Zero analytics SDKs, zero advertising SDKs, zero cloud servers, and zero personal data collection.
+- All OBS server profiles, credentials, and license seals remain encrypted locally on the user's device. Self-signed TLS (`wss://`) overrides are strictly scoped to private RFC 1918 LAN addresses, localhost, and the active connected OBS host.
+
+## Official Downloads & Documentation
+- [Official Landing Page](https://oaonuraksoy.github.io/cuedeck/): Overview, 6-module breakdown, competitor comparison, 3-step OBS setup, and FAQ.
+- [Apple App Store (iOS / iPadOS)](https://apps.apple.com/app/id6814831050): CueDeck for iPhone and iPad.
+- [Google Play Store (Android)](https://play.google.com/store/apps/details?id=tr.com.oahub.cuedeck): CueDeck for Android phones and tablets.
+- [Support & Troubleshooting Guide](https://oaonuraksoy.github.io/cuedeck/support.html): OBS WebSocket v5 configuration, firewall rules, and local network permissions.
+- [Privacy Policy](https://oaonuraksoy.github.io/cuedeck/privacy.html): Zero-data-collection guarantee (GDPR, KVKK, CCPA).
+- [Terms of Use (EULA)](https://oaonuraksoy.github.io/cuedeck/terms.html): End User License Agreement and store terms.
+- [Data Deletion Guide](https://oaonuraksoy.github.io/cuedeck/data-deletion.html): Local credential clearing and deletion instructions.

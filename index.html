@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CueDeck — OBS Studio Remote &amp; Stream Deck</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Turn your phone into an OBS Studio remote &amp; stream deck with 60 FPS audio meters, LAN auto-scan, scene matrix, and live tally lights. Zero ads.">
+  <meta name="keywords" content="CueDeck, OBS Studio Remote, Mobile Stream Deck, OBS WebSocket v5, Live Broadcast Mixer, 60 FPS VU Meter, Tally Lights, Twitch, YouTube, Kick">
+  <meta name="author" content="Onur Aksoy (OAHUB)">
+  <meta name="theme-color" content="#0A0D14">
+  <link rel="canonical" href="https://oaonuraksoy.github.io/cuedeck/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oaonuraksoy.github.io/cuedeck/">
+  <meta property="og:title" content="CueDeck — OBS Studio Remote &amp; Stream Deck">
+  <meta property="og:description" content="Turn your phone into a zero-latency OBS Studio control surface with 60 FPS audio meters, LAN auto-scan, QR pairing, and live tally. Zero ads.">
+  <meta property="og:image" content="https://oaonuraksoy.github.io/cuedeck/assets/og-image.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://oaonuraksoy.github.io/cuedeck/">
+  <meta property="twitter:title" content="CueDeck — OBS Studio Remote &amp; Stream Deck">
+  <meta property="twitter:description" content="Direct OBS WebSocket v5 mobile control deck with 60 FPS VU meters, scene matrix, and zero desktop companion software.">
+  <meta property="twitter:image" content="https://oaonuraksoy.github.io/cuedeck/assets/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- JSON-LD Structured Data (@graph) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://oaonuraksoy.github.io/cuedeck/#app",
+        "name": "CueDeck",
+        "operatingSystem": "iOS, Android",
+        "applicationCategory": "MultimediaApplication",
+        "softwareVersion": "2026.11.24",
+        "url": "https://oaonuraksoy.github.io/cuedeck/",
+        "image": "https://oaonuraksoy.github.io/cuedeck/assets/og-image.png",
+        "description": "Turn your phone into a zero-latency OBS Studio remote and mobile stream deck with 60 FPS audio meters, LAN auto-scan, scene matrix, and live tally lights.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@id": "https://oaonuraksoy.github.io/cuedeck/#author"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://oaonuraksoy.github.io/cuedeck/#author",
+        "name": "Onur Aksoy",
+        "url": "https://oaonuraksoy.github.io/cuedeck/"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://oaonuraksoy.github.io/cuedeck/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do I need to install any software on my computer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely NOT! CueDeck connects directly using the official 'OBS WebSocket v5' engine natively built into OBS Studio 28 and newer. No third-party desktop companion apps or background servers are needed."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which OBS versions are supported?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CueDeck is 100% compatible with OBS Studio v28, v29, v30, v31, and all future releases."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do my phone and PC need to be on the same Wi-Fi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. CueDeck operates over your local network (LAN / Wi-Fi) for lightning-fast zero latency and maximum security. Even if your external Internet goes down, local deck control stays fully operational."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are there recurring subscription fees?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No! CueDeck is completely FREE to download and use with 2 scenes, 16:9 live confidence monitor, audio mixer, and stream safety controls. Advanced 16+ scene banks, smart auto-mute mic matrix, and custom macro decks are unlocked with a single one-time $0.99 Pro Lifetime purchase. No recurring subscriptions, ever!"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my OBS password and data safe?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Your passwords and profiles are saved exclusively on your phone's hardware-encrypted storage (iOS Keychain / Android Keystore). CueDeck has zero cloud servers, zero analytics trackers, and collects zero personal data."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="./index.html" class="brand-logo">
+        <img src="./assets/favicon.svg" alt="CueDeck Logo" width="38" height="38">
+        <span>Cue<span class="highlight">Deck</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#features" data-i18n="nav.features">Features</a></li>
+        <li><a href="#compare" data-i18n="nav.compare">Comparison</a></li>
+        <li><a href="#how-it-works" data-i18n="nav.howItWorks">How it Works</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        <li><a href="./support.html" data-i18n="nav.support">Support</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Language Switcher (TR / EN) -->
+        <div class="lang-switcher">
+          <button class="lang-btn" data-lang="tr">TR</button>
+          <button class="lang-btn active" data-lang="en">EN</button>
+        </div>
+
+        <a href="#download" class="btn btn-primary" data-i18n="nav.download">Download Now</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badges-row">
+            <span class="badge badge-live">
+              <span class="pulse-dot"></span>
+              <span data-i18n="hero.badge">LIVE BROADCAST DECK</span>
+            </span>
+            <span class="badge badge-version">OBS v28+ & v5 NATIVE</span>
+          </div>
+
+          <h1 class="hero-title" data-i18n="hero.title">Ditch Expensive Hardware: Turn Your Phone into a <span class="gradient-text-red">Pro OBS Deck</span></h1>
+
+          <p class="hero-subtitle" data-i18n="hero.subtitle">Stop spending hundreds of dollars on dedicated hardware or recurring subscriptions. CueDeck turns your mobile phone into an ultra-responsive broadcast control station with 60 FPS audio meters, zero-latency scene matrix, and instant live tally.</p>
+
+          <!-- Store Download Badges -->
+          <div class="store-badges" id="download">
+            <a href="https://apps.apple.com/app/id6814831050" target="_blank" rel="noopener noreferrer" class="store-badge-link">
+              <!-- Apple SVG -->
+              <svg viewBox="0 0 170 170">
+                <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.6-7.77-11.71-14.19-5.74-8.91-10.36-19.14-13.86-30.7-3.5-11.55-5.25-22.37-5.25-32.47 0-14.37 3.75-26.3 11.26-35.79 7.51-9.49 16.92-14.38 28.23-14.67 4.9.1 10.39 1.34 16.48 3.71 6.09 2.37 10.14 3.63 12.16 3.79 1.63-.16 5.86-1.46 12.69-3.9 6.83-2.45 12.63-3.6 17.4-3.46 11.96.98 21.6 5.37 28.92 13.17-10.43 6.32-15.54 15.11-15.33 26.37.22 8.71 3.59 16.03 10.11 21.96 6.52 5.93 14.13 9.4 22.83 10.43-2.61 8.05-6.09 16.63-10.43 25.75zM119.22 33.56c0-6.74 2.5-13.04 7.5-17.91 5-4.87 11.08-7.77 18.25-8.69.22 1.3.33 2.39.33 3.26 0 6.63-2.61 13.1-7.83 18.42-5.22 5.33-11.41 8.37-18.57 9.13.1-1.3.32-2.7.32-4.21z"/>
+              </svg>
+              <div class="store-badge-text">
+                <span class="small" data-i18n="store.appStore.sub">Download on the</span>
+                <span class="big" data-i18n="store.appStore.main">App Store</span>
+              </div>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=tr.com.oahub.cuedeck" target="_blank" rel="noopener noreferrer" class="store-badge-link">
+              <!-- Google Play SVG -->
+              <svg viewBox="0 0 512 512">
+                <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
+              </svg>
+              <div class="store-badge-text">
+                <span class="small" data-i18n="store.googlePlay.sub">Get it on</span>
+                <span class="big" data-i18n="store.googlePlay.main">Google Play</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="hero-highlights">
+            <div class="hero-highlight-item">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span data-i18n="hero.highlight1">Free Download • $0.99 Pro Lifetime</span>
+            </div>
+            <div class="hero-highlight-item">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span data-i18n="hero.highlight2">No PC Companion Software Needed</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== HERO CONSOLE MOCKUP ==================== -->
+        <div class="hero-mockup-wrapper">
+          <div class="mockup-glow"></div>
+          
+          <div class="console-chassis">
+            <div class="console-screen">
+              <!-- Top Telemetry Header -->
+              <div class="mockup-header">
+                <div class="mockup-header-left">
+                  <span class="mockup-rec-badge">00:14:28</span>
+                  <span style="color: #34C759; font-weight: 700;">60 FPS</span>
+                </div>
+                <div class="mockup-header-right">
+                  <span>CPU: 4.2%</span>
+                  <span style="color: #0A84FF;">OBS 30.2</span>
+                </div>
+              </div>
+
+              <!-- 16:9 Program Video Monitor -->
+              <div class="mockup-monitor">
+                <span class="mockup-monitor-overlay">LIVE: GAME &amp; WEBCAM</span>
+                <div class="mockup-monitor-art">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                  </svg>
+                  <span style="font-size: 0.7rem; font-weight: 600;">1080p60 • 6000 kbps</span>
+                </div>
+                <div class="mockup-monitor-stats">0 DROPPED FRAMES</div>
+              </div>
+
+              <!-- 2x2 Interactive Scene Matrix Pads -->
+              <div class="mockup-scenes-grid">
+                <!-- Pad 1: Live -->
+                <div class="scene-pad live">
+                  <div class="pad-top">
+                    <span class="pad-tally red"></span>
+                    <span style="font-size: 0.65rem; color: #FF3B30; font-weight: 800;">LIVE</span>
+                  </div>
+                  <span class="pad-title">Game &amp; Webcam</span>
+                  <span class="pad-sub">Scene 1 (Program)</span>
+                </div>
+
+                <!-- Pad 2: Preview -->
+                <div class="scene-pad preview">
+                  <div class="pad-top">
+                    <span class="pad-tally green"></span>
+                    <span style="font-size: 0.65rem; color: #34C759; font-weight: 800;">PREVIEW</span>
+                  </div>
+                  <span class="pad-title">Full Screen Cam</span>
+                  <span class="pad-sub">Scene 2 (Ready)</span>
+                </div>
+
+                <!-- Pad 3: Regular -->
+                <div class="scene-pad">
+                  <div class="pad-top">
+                    <span class="pad-tally" style="background: rgba(255,255,255,0.2);"></span>
+                    <span style="font-size: 0.65rem; color: #64748B;">STANDBY</span>
+                  </div>
+                  <span class="pad-title">BRB / Break Screen</span>
+                  <span class="pad-sub">VTR Timer Active</span>
+                </div>
+
+                <!-- Pad 4: Regular -->
+                <div class="scene-pad">
+                  <div class="pad-top">
+                    <span class="pad-tally" style="background: rgba(255,255,255,0.2);"></span>
+                    <span style="font-size: 0.65rem; color: #64748B;">STANDBY</span>
+                  </div>
+                  <span class="pad-title">Starting Soon</span>
+                  <span class="pad-sub">Intro Overlay</span>
+                </div>
+              </div>
+
+              <!-- 60 FPS Dynamic VU Meter Strip -->
+              <div class="mockup-audio-strip">
+                <div class="audio-header">
+                  <span>MIC / AUX (SHURE SM7B)</span>
+                  <span class="vu-db-text">-6 dB</span>
+                </div>
+                <div class="vu-meter-bar-container">
+                  <div class="vu-meter-track">
+                    <div class="vu-meter-fill"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Row: Studio CUT button -->
+              <div class="mockup-actions-row">
+                <button class="mockup-btn cut-btn">
+                  <span>⚡ TAKE / CUT</span>
+                </button>
+                <button class="mockup-btn" style="color: #FF3B30; border-color: rgba(255,59,48,0.3);">
+                  <span>🎙️ MUTE</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6 CORE MODULES SECTION ==================== -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-version" data-i18n="features.tag">HARDWARE CONSOLE PERFORMANCE</span>
+          <h2 class="gradient-text-blue" data-i18n="features.title">6 Core Broadcast Modules Engineered for Streamers</h2>
+          <p class="section-subtitle" data-i18n="features.subtitle">Communicates directly with OBS Studio's built-in WebSocket. Zero middleware, zero latency.</p>
+        </div>
+
+        <div class="modules-grid">
+          <!-- Modül 1 -->
+          <div class="module-card card-red">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod1.title">Dynamic Scene Matrix & Tally</h3>
+            <p class="module-desc" data-i18n="mod1.desc">Never type scene names manually. CueDeck discovers all your OBS scenes upon connection. Hardware-grade Red (Live/Program) and Green (Preview) tally lights keep your broadcast foolproof.</p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod1.spec1">Single-touch quick switch for solo creators</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod1.spec2">Dedicated CUT / TAKE button for multi-cam studios</span></li>
+            </ul>
+          </div>
+
+          <!-- Modül 2 -->
+          <div class="module-card">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod2.title">Smart Layer & Overlay (Eye) Control</h3>
+            <p class="module-desc" data-i18n="mod2.desc">Toggle facecam borders, overlays, sponsor banners, and chat boxes with instant haptic taps. The layer list refreshes dynamically as you switch active scenes.</p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod2.spec1">Scene-aware overlay synchronization</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod2.spec2">Accidental-proof one-tap toggles</span></li>
+            </ul>
+          </div>
+
+          <!-- Modül 3 -->
+          <div class="module-card card-green">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod3.title">60 FPS Isolated Audio Mixer & VU Meters</h3>
+            <p class="module-desc" data-i18n="mod3.desc">Balance game audio, microphone, Discord, and music on tactile vertical faders. Powered by Flutter GPU RepaintBoundary for smooth, stutter-free real-time VU peak metering.</p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod3.spec1">One-touch urgent red MUTE indicator</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod3.spec2">Precise decibel (-dB) fader curve</span></li>
+            </ul>
+          </div>
+
+          <!-- Modül 4 -->
+          <div class="module-card">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod4.title">Media & VTR Countdown Timer</h3>
+            <p class="module-desc" data-i18n="mod4.desc">Trigger intros, sound clips, and B-Roll effortlessly. Track remaining clip durations with a live millisecond VTR countdown timer to eliminate dead air during broadcasts.</p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod4.spec1">Live remaining clip countdown timer</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod4.spec2">Visual playback status indicator</span></li>
+            </ul>
+          </div>
+
+          <!-- Modül 5 -->
+          <div class="module-card card-red">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod5.title">Broadcast & Recording Telemetry</h3>
+            <p class="module-desc" data-i18n="mod5.desc">Monitor live program video directly on your phone. Real-time CPU load, dropped frames, bitrate, and timer telemetry. Slide-to-Confirm safety lock prevents accidental stream termination.</p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod5.spec1">Slide-to-Activate / Stop stream security</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod5.spec2">Red live REC badge and duration counter</span></li>
+            </ul>
+          </div>
+
+          <!-- Modül 6 -->
+          <div class="module-card">
+            <div class="module-icon-box">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="module-title" data-i18n="mod6.title">Custom Macro Deck & Automation</h3>
+            <p class="module-desc" data-i18n="mod6.desc">Chain complex broadcast actions into a single tap: Trigger 'BRB Mode' to mute your microphone, attenuate background music, switch scenes, and fire the countdown video simultaneously.</p>
+            <ul class="module-specs-list">
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod6.spec1">Sequential multi-action workflow execution</span></li>
+              <li><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> <span data-i18n="mod6.spec2">Hardware-grade physical haptic vibration</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COMPARISON TABLE SECTION ==================== -->
+    <section class="section" id="compare">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-live" data-i18n="compare.tag">WHY CUEDECK?</span>
+          <h2 class="gradient-text-red" data-i18n="compare.title">Compare with Traditional Alternatives</h2>
+          <p class="section-subtitle" data-i18n="compare.subtitle">Say goodbye to bulky hardware and clunky desktop server apps.</p>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th data-i18n="compare.th.feature">Feature & Capability</th>
+                <th class="highlight-col" data-i18n="compare.th.cuedeck">CueDeck</th>
+                <th data-i18n="compare.th.streamdeck">Elgato Stream Deck</th>
+                <th data-i18n="compare.th.touchportal">Touch Portal</th>
+                <th data-i18n="compare.th.deckboard">Deckboard</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="compare.row1">Pricing Model</td>
+                <td class="highlight-col status-icon yes" data-i18n="compare.row1.cuedeck">Free Download + $0.99 Pro (Lifetime)</td>
+                <td class="status-icon no" data-i18n="compare.row1.streamdeck">$150 - $250 Expensive Hardware</td>
+                <td class="status-icon warn" data-i18n="compare.row1.touchportal">Monthly / Yearly Pro Subscription</td>
+                <td class="status-icon warn" data-i18n="compare.row1.deckboard">Subscription / Paid Extensions</td>
+              </tr>
+              <tr>
+                <td data-i18n="compare.row2">PC Companion App Required?</td>
+                <td class="highlight-col status-icon yes" data-i18n="compare.row2.cuedeck">NO (Native OBS v5 WebSocket)</td>
+                <td class="status-icon no" data-i18n="compare.row2.streamdeck">Requires Elgato Software</td>
+                <td class="status-icon no" data-i18n="compare.row2.touchportal">Requires Companion PC Server</td>
+                <td class="status-icon no" data-i18n="compare.row2.deckboard">Requires Desktop Server</td>
+              </tr>
+              <tr>
+                <td data-i18n="compare.row3">Setup & Pairing Time</td>
+                <td class="highlight-col status-icon yes" data-i18n="compare.row3.cuedeck">1-Second Instant QR Scan</td>
+                <td class="status-icon warn" data-i18n="compare.row3.streamdeck">USB Cables + Software Setup</td>
+                <td class="status-icon no" data-i18n="compare.row3.touchportal">Manual IP, Port & Firewall Setup</td>
+                <td class="status-icon no" data-i18n="compare.row3.deckboard">Manual IP & Plugin Installation</td>
+              </tr>
+              <tr>
+                <td data-i18n="compare.row4">60 FPS GPU Audio Peak Meters</td>
+                <td class="highlight-col status-icon yes" data-i18n="compare.row4.cuedeck">Yes (Smooth GPU Acceleration)</td>
+                <td class="status-icon no" data-i18n="compare.row4.streamdeck">Static LCD icons only</td>
+                <td class="status-icon warn" data-i18n="compare.row4.touchportal">Laggy / Low Refresh Rate</td>
+                <td class="status-icon no" data-i18n="compare.row4.deckboard">None or High Latency</td>
+              </tr>
+              <tr>
+                <td data-i18n="compare.row5">Live Mobile Program Video Monitor</td>
+                <td class="highlight-col status-icon yes" data-i18n="compare.row5.cuedeck">Included (16:9 Real-Time)</td>
+                <td class="status-icon no" data-i18n="compare.row5.streamdeck">No</td>
+                <td class="status-icon warn" data-i18n="compare.row5.touchportal">Only with Extra Plugins</td>
+                <td class="status-icon no" data-i18n="compare.row5.deckboard">No</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3-STEP SETUP GUIDE ==================== -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-version" data-i18n="steps.tag">GET STARTED IN 3 STEPS</span>
+          <h2 class="gradient-text-blue" data-i18n="steps.title">Live in Under 60 Seconds</h2>
+          <p class="section-subtitle" data-i18n="steps.subtitle">No drivers, no extra server apps. OBS Studio 28+ has everything built-in.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num" data-i18n="step1.num">1</div>
+            <h3 data-i18n="step1.title">Open OBS Studio 28+</h3>
+            <p data-i18n="step1.desc">In OBS Studio, navigate to Tools -> 'WebSocket Server Settings'. Ensure the WebSocket server is enabled.</p>
+            <div class="step-visual">
+              <div>&gt; Menu: Tools</div>
+              <div style="color: #34C759;">&gt; [x] Enable WebSocket Server</div>
+              <div>&gt; Default Port: 4455</div>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-num" data-i18n="step2.num">2</div>
+            <h3 data-i18n="step2.title">Show Connect Info</h3>
+            <p data-i18n="step2.desc">Click 'Show Connect Info' to display the built-in local pairing QR code on your computer screen.</p>
+            <div class="step-visual">
+              <div>&gt; Button: [Show Connect Info]</div>
+              <div style="color: #0A84FF;">&gt; Local IP: 192.168.1.xxx</div>
+              <div>&gt; Protocol: obsws://</div>
+            </div>
+          </div>
+
+          <div class="step-card active-step">
+            <div class="step-num" data-i18n="step3.num">3</div>
+            <h3 data-i18n="step3.title">Scan with CueDeck</h3>
+            <p data-i18n="step3.desc">Launch CueDeck on your phone, point your camera at the QR code. You're paired instantly and ready to broadcast!</p>
+            <div class="step-visual">
+              <div style="color: #FF3B30;">&gt; Camera QR Viewfinder Active</div>
+              <div>&gt; Auto SHA-256 Auth</div>
+              <div style="color: #34C759;">&gt; CONNECTED (0ms)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== STREAMER REVIEWS ==================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-live" data-i18n="reviews.tag">COMMUNITY REVIEWS</span>
+          <h2 class="gradient-text-red" data-i18n="reviews.title">Trusted by Streamers Worldwide</h2>
+          <p class="section-subtitle" data-i18n="reviews.subtitle">The go-to broadcast controller for Twitch, YouTube, and Kick creators.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote" data-i18n="review1.quote">
+              "Instead of spending $200 on a physical stream deck, I installed CueDeck on my spare iPhone. Zero latency, crisp TAKE transitions, and live red tally lights give a real studio console feel."
+            </p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">EK</div>
+              <div class="reviewer-info">
+                <h4>Emre K.</h4>
+                <span data-i18n="review1.role">Twitch Partner Streamer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote" data-i18n="review2.quote">
+              "I was tired of clunky desktop server apps and firewall port headaches. Scanning OBS Studio's built-in QR code and having instant control on the first try feels effortless."
+            </p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">BS</div>
+              <div class="reviewer-info">
+                <h4>Burak S.</h4>
+                <span data-i18n="review2.role">YouTube Live Creator & Podcaster</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote" data-i18n="review3.quote">
+              "The 60 FPS VU peak meters and fader response are super smooth. Muting Discord audio and watching VTR countdown timers without alt-tabbing mid-game leveled up my stream."
+            </p>
+            <div class="reviewer-meta">
+              <div class="reviewer-avatar">DY</div>
+              <div class="reviewer-info">
+                <h4>Deniz Y.</h4>
+                <span data-i18n="review3.role">Kick Streamer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FAQ ACCORDION ==================== -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-version" data-i18n="faq.tag">GOT QUESTIONS?</span>
+          <h2 class="gradient-text-blue" data-i18n="faq.title">Frequently Asked Questions</h2>
+          <p class="section-subtitle" data-i18n="faq.subtitle">Everything you need to know about CueDeck and OBS integration.</p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-item open">
+            <button class="faq-trigger">
+              <span data-i18n="faq.q1">Do I need to install any software on my computer?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq.a1">Absolutely NOT! CueDeck connects directly using the official 'OBS WebSocket v5' engine natively built into OBS Studio 28 and newer. No third-party desktop companion apps or background servers are needed.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq.q2">Which OBS versions are supported?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq.a2">CueDeck is 100% compatible with OBS Studio v28, v29, v30, v31, and all future releases.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq.q3">Do my phone and PC need to be on the same Wi-Fi?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq.a3">Yes. CueDeck operates over your local network (LAN / Wi-Fi) for lightning-fast zero latency and maximum security. Even if your external Internet goes down, local deck control stays fully operational.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq.q4">Are there recurring subscription fees?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq.a4">No! CueDeck is completely FREE to download and use with 2 scenes, 16:9 live confidence monitor, audio mixer, and stream safety controls. Advanced 16+ scene banks, smart auto-mute mic matrix, and custom macro decks are unlocked with a single one-time $0.99 Pro Lifetime purchase. No recurring subscriptions, ever!</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span data-i18n="faq.q5">Is my OBS password and data safe?</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p data-i18n="faq.a5">Your passwords and profiles are saved exclusively on your phone's hardware-encrypted storage (iOS Keychain / Android Keystore). CueDeck has zero cloud servers, zero analytics trackers, and collects zero personal data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== BOTTOM CTA ==================== -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-banner">
+          <div class="cta-banner-content">
+            <span class="badge badge-live">CUEDECK</span>
+            <h2 class="gradient-text-blue" data-i18n="cta.title">Put a Pro Broadcast Console in Your Pocket</h2>
+            <p class="section-subtitle" data-i18n="cta.subtitle">Download now, pair in seconds, and elevate your live streaming workflow today.</p>
+            <div class="hero-cta-group">
+              <a href="#download" class="btn btn-primary" data-i18n="nav.download">Download Now</a>
+              <a href="./support.html" class="btn btn-secondary" data-i18n="nav.support">Support</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="./index.html" class="brand-logo">
+            <img src="./assets/favicon.svg" alt="CueDeck Logo" width="34" height="34">
+            <span>Cue<span class="highlight">Deck</span></span>
+          </a>
+          <p data-i18n="footer.desc">Professional zero-latency mobile broadcast controller and stream deck for OBS Studio.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.nav">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#features" data-i18n="nav.features">Features</a></li>
+            <li><a href="#compare" data-i18n="nav.compare">Comparison</a></li>
+            <li><a href="#how-it-works" data-i18n="nav.howItWorks">How it Works</a></li>
+            <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.legal">Legal & Security</h4>
+          <ul class="footer-links">
+            <li><a href="./privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+            <li><a href="./terms.html" data-i18n="footer.terms">Terms of Use (EULA)</a></li>
+            <li><a href="./support.html" data-i18n="footer.support">Support & Knowledge Base</a></li>
+            <li><a href="./data-deletion.html" data-i18n="footer.deletion">Data Deletion Request</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-i18n="footer.col.connect">Connect & Support</h4>
+          <ul class="footer-links">
+            <li><a href="https://github.com/oaonuraksoy/cuedeck" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+            <li><a href="https://github.com/oaonuraksoy/cuedeck/issues" target="_blank" rel="noopener noreferrer">Report Issue</a></li>
+            <li><a href="mailto:dev@onuraksoy.com.tr">dev@onuraksoy.com.tr</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 CueDeck. <span data-i18n="footer.rights">All Rights Reserved.</span>
+        </div>
+        <div class="disclaimer-text" data-i18n="footer.disclaimer">CueDeck is an independent software application. OBS Studio is a trademark of the OBS Project. Elgato and Stream Deck are trademarks of Corsair Gaming, Inc. All trademarks are the property of their respective owners.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="./js/main.js"></script>
+</body>
+</html>
